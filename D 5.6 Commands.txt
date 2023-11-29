@@ -56,7 +56,9 @@
 
 
 
->>> p1.name.add(science)  
-Traceback (most recent call last):
-  File "<console>", line 1, in <module>
-AttributeError: 'Post' object has no attribute 'name'
+>>> p1.post.add(science)
+>>> p2.post.add(culture)  
+>>> p2.post.add(science)
+>>> p3.post.add(science)
+
+
