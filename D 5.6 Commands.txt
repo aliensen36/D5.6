@@ -1,58 +1,62 @@
-Windows PowerShell
-(C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
-
-Установите последнюю версию PowerShell для новых функций и улучшения! https://aka.ms/PSWindows
-
-(venv) PS C:\Users\user\PycharmProjects\NewsPortal> cd NewsPaper
-(venv) PS C:\Users\user\PycharmProjects\NewsPortal\NewsPaper> python manage.py shell
-Python 3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)] on win32
-Type "help", "copyright", "credits" or "license" for more information.
-(InteractiveConsole)
 >>> from news.models import *
+
 >>> u1 = User.objects.create_user('Peter')
-Traceback (most recent call last):
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
-    return self.cursor.execute(sql, params)
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
-    return super().execute(query, params)
-sqlite3.OperationalError: no such table: auth_user
+>>> u2 = User.objects.create_user('Nick')
 
-The above exception was the direct cause of the following exception:
+>>> a1 = Author.objects.create(user=u1)
+>>> a2 = Author.objects.create(user=u2)
 
+>>> sport = Category.objects.create(name='Спорт')
+>>> culture = Category.objects.create(name='Культура')
+>>> science = Category.objects.create(name='Наука')
+>>> cooking = Category.objects.create(name='Кулинария')
+
+>>> p1 = Post.objects.create(author=a1, title='Обнаружено новое протоскопление массивных покоящихся галактик', text='Международная команда астрономов сообщает об открытии нового протоскопления массивных покоящихся галактик с красным смещением около 4,0. Это первое обнаружение протокластера такого типа при таком вы
+соком красном смещении. Открытие было подробно описано в статье, опубликованной 20 ноября на сервере предварительной печати arXiv. Группа астрономов во главе с Масаюки Танакой из Национальной астрономической об
+серватории Японии (NAOJ) обнаружила новое протоскопление с высоким красным смещением. Проанализировав данные обзора Subaru/XMM-Newton (SDXS), ученые определили концентрацию по меньшей мере пяти массивных покоящихся галактик с красным смещением 3,99. Исследование было дополнено данными последующих наблюдений с помощью спектрографа MOSFIRE на телескопе Keck I. Обнаруженные галактики получили обозначения: SXDS2_19838, SXDS2_15659, SXDS2_16609, SXDS2_19229 и SXDS2_19997. Галактика SXDS2_19838 является самой массивной из них, поскольку ее звездная масса и масса гало были измерены как 113,1 миллиарда и 3,1 триллиона солнечных масс соответственно. Наблюдения показывают, что SXDS2_19838 окружена четырьмя другими галактиками, которые 
+вместе имеют массы звезд и гало, составляющие около 230 миллиардов и 8,5 триллионов солнечных масс соответственно. Галактики недавно пережили эпизод звездной активности, за которым последовало быстрое угасание. Сейчас скорость звездообразования в них составляет от 1,4 до 11,5 масс Солнца в год. Собранные данные по
+зволяют предположить, что все эти пять галактик сформировались и погасли в одно и то же время. Авторы статьи предполагают, что это протокластер коллапсирует, образуя ядро массивного скопления.')
+
+
+>>> p2 = Post.objects.create(author=a2, title=' Выставка «Век 19-й. Изменчивая мода. От ампира до модерна
+» на ВДНХ', text='С 26 октября по 24 апреля на ВДНХ пройдет масштабная выставка «Век 19-й. Изменчивая мод
+а. От ампира до модерна». Проект расскажет о неразрывной связи между социальными, экономическими, техноло
+гическими переменами, которые переживала Европа в XIX веке, и модной индустрией той эпохи. Экспозиция объ
+единит более 400 подлинных предметов XIX века: платья, обувь, аксессуары, гравюры, — которые охватывают п
+ериод ампира, викторианский романтизм и поздний викторианский период с переходом в модерн. Большинство эк
+спонатов будут демонстрироваться широкой публике впервые, а главной особенностью выставки станет большая 
+коллекция нижнего белья и обуви XIX века: эти предметы гардероба почти не сохранились до наших дней и ред
+ко появляются в музеях. На трех этажах павильона разместятся экспонаты из частных коллекций. Основу экспо
+зиции составят платья, обувь, аксессуары и гравюры из личного собрания Назима и Елены Мустафаевых, а такж
+е обширная коллекция Антона Приймака, в которую входят корсетные изделия, кринолины и турнюры. Павел Карт
+ашев и Вадим Полубоярцев предоставили для выставки часть своей коллекции сумочек, принадлежащих к «долгом
+у XIX веку». Разнообразие аксессуаров XIX века будет представлено редкими веерами из коллекции Евгении До
+ремидовой, собранием пуговиц Натальи Пристанковой, кружевных изделий Галы Гунем и швейных наборов и несес
+серов Дарьи Березкиной и Александра Лисицына. В детской зоне будут показаны игрушечный домик в виде обувн
+ого магазина из частной коллекции Бориса Сумарокова и игры из собрания Татьяны Макеевой.Интегрированные в
+ экспозицию «ароматы времени» от Элины Арсеньевой помогут передать дух эпохи. Также в выставочном простра
+нстве можно будет полюбоваться на старинные платья, принадлежащие модельеру Елене Супрун и художнику по к
+остюмам Дмитрию Андрееву. Дополнят экспозицию раздел об истории цвета Инги Кропачевой и образцы вышивки В
+алентины Григорьевой. «Не случайно в названии выставки мы используем выражение «изменчивая мода», — расск
+азывает куратор выставки, коллекционер Назим Мустафаев. — Посетители нашей экспозиции увидят, как вместе 
+с политическими и технологическими изменениями на протяжении века менялась и мода. Экспозиция задумана ка
+к «выставка-книга»: ее можно не только смотреть, но и читать. Вся история моды XIX века представлена как 
+хронологическая шкала, проиллюстрированная текстом, изображениями костюмов, подлинными гравюрами и рарите
+тными предметами». В рамках выставки также запланирована обширная образовательная программа с авторскими лекциями коллекционеров — участников экспозиции, которые специализируются на моде XIX века.')
+
+
+>>> p3 = Post.objects.create(author=a2, title='В России нашли способ снизить вредность производства целлюлозы', text='Ученые САФУ доказали возможность замены опасных растворителей, используемых в производстве целлюлозы, на экологичную альтернативу – ионные жидкости (расплавленные соли). По словам авторов исследова
+ния, эксперименты, проведенные с различными видами древесины и биомассой арктических бурых водорослей вида фукус пузырчатый (Fucus vesiculosus), показали, что получаемые продукты слабо отличаются от аналогов, произведенных другими способами. Результаты работы опубликованы в журнале Molecules. Целлюлозно-бумажная промышленность – неэкологичный и вредный вид производства. Для производства бумаги не только вырубают леса, но и используют множество ядовитых веществ (в частности, сернистые соединения), рассказали специалисты лаборатории химии природных соединений и биоаналитики, базового центра "Арктика" Северного (Арктического) федерального университета (САФУ). Органические растворители, как объяснили эксперты, необходимы для полного расщепления древесного материала для последующей его обработки. Раствор из растительной биомассы фрак
+ционируют, то есть разделяют посредством осаждения. Это необходимо, чтобы отделить полисахаридную фракцию, содержащую в том числе целлюлозу, от других составляющих растительной биомассы. В классических технологиях используется только такой способ выделения полисахаридов, поскольку все исследования и описания касал
+ись традиционных растворителей: известна степень извлечения веществ и их качество, пояснили эксперты. Ученые САФУ провели ряд экспериментов по растворению древесины и биомассы бурых водорослей в ионных жидкостях, которые могут стать заменой ядовитых соединений. "Ионная жидкость – это расплавленная соль, состоящая только из ионов. Классический пример – обычная пищевая соль (NaCl). При комнатной температуре это кристаллы, но если их нагреть до 800°С, то полученная расплавленная соль будет классической ионной жидкостью. В 
+наших работах мы использовали органические соли, которые переходят в жидкое состояние при комнатной температуре", – рассказал начальник управления инновационного развития САФУ Антон Ладесов. Он подчеркнул, что исследователи подобрали ряд растворителей растительной биомассы – соли 1-бутил-3-метилимидазолия. После полного растворения растительного сырья и получения из раствора полисахаридной фракции и лигнина (полимерн
+ого соединения, содержащегося почти во всех сухопутных растениях и некоторых водорослях) ученые САФУ изучили полученные продукты. "Мы полностью растворяли древесину и биомассу водорослей ионными жидкостями при разной температуре за различное время. Затем раствор переливали в ацетон для отделения природного полимера лигнина, который растворялся в ацетоне, от полисахаридной фракции, выпадавшей в осадок. Далее ацетон выпаривали, осаждая лигнин. Мы получили целевые продукты – лигнин и полисахарид и исследовали их всеми доступными нам методами: инфракрасной спектроскопией, спектроскопией ядерного магнитного резонанса, масс-спек
+трометрией, рентгеновской дифрактометрией", – пояснил Ладесов. Результаты исследования показали, что вещества, полученные с использованием нового способа, не уступают по своим свойствам продуктам, производимым по другим методам. По словам Ладесова, главной сложностью в "озеленении" целлюлозно-бумажной промышленности является относительно высокая стоимость ионных жидкостей. Поэтому в будущем коллектив авторов планируе
+т перейти к изучению разновидности ионных жидкостей – глубоких эвтектических (легко плавящихся) растворителей, состав которых представляет собой смесь органических и неорганических солей.')
+
+
+
+>>> p1.name.add(science)  
 Traceback (most recent call last):
   File "<console>", line 1, in <module>
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\contrib\auth\models.py", line 161, in create_user
-    return self._create_user(username, email, password, **extra_fields)
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\contrib\auth\models.py", line 155, in _create_user
-    user.save(using=self._db)
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\contrib\auth\base_user.py", line 76, in save
-    super().save(*args, **kwargs)
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\models\base.py", line 814, in save
-    self.save_base(
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\models\base.py", line 877, in save_base
-    updated = self._save_table(
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\models\base.py", line 1020, in _save_table
-    results = self._do_insert(
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
-    return manager._insert(
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\models\manager.py", line 87, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\models\query.py", line 1805, in _insert
-    return query.get_compiler(using=using).execute_sql(returning_fields)
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\models\sql\compiler.py", line 1822, in execute_sql
-    cursor.execute(sql, params)
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\backends\utils.py", line 102, in execute
-    return super().execute(sql, params)
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\backends\utils.py", line 67, in execute
-    return self._execute_with_wrappers(
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
-    return executor(sql, params, many, context)
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
-    return self.cursor.execute(sql, params)
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\utils.py", line 91, in __exit__
-    raise dj_exc_value.with_traceback(traceback) from exc_value
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\backends\utils.py", line 89, in _execute
-    return self.cursor.execute(sql, params)
-  File "C:\Users\user\PycharmProjects\NewsPortal\venv\lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
-    return super().execute(query, params)
-django.db.utils.OperationalError: no such table: auth_user
+AttributeError: 'Post' object has no attribute 'name'
